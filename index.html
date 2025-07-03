@@ -1,178 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Staking & Mining Platform</title>
-
-  <!-- Google Fonts: Orbitron for headings (AI/Tech feel), Roboto Mono for body text (code/terminal feel) -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;707&display=swap" rel="stylesheet">
-  
-  <!-- Link to your custom stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDC Mining with NFTs</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <div id="app-container">
-    <header class="header">
-      <div class="logo">
-        <h1>AI <span class="highlight">Staking</span> & <span class="highlight">Mining</span></h1>
-        <p class="tagline">Intelligent Earnings, AI Era</p>
-      </div>
-      <nav class="main-nav">
-        <a href="#wallet-section" class="nav-item">Wallet</a>
-        <a href="#buy-nft-section" class="nav-item">Buy NFT</a>
-        <a href="#staking-section" class="nav-item">ETH Staking</a>
-        <a href="#mining-section" class="nav-item">USDC Mining</a>
-        <a href="#send-crypto-section" class="nav-item">Send Crypto</a>
-        <a href="#withdraw-section" class="nav-item">Admin Tools</a>
-      </nav>
-    </header>
-
-    <main class="main-content">
-      <!-- Wallet Connection Section -->
-      <section id="wallet-section" class="section-card glassmorphism-card">
-        <h2 class="section-title">Connect Web3 Wallet</h2>
-        <p class="section-description">To interact with our platform, please connect your Web3 wallet (e.g., MetaMask).</p>
-        <div class="input-group" style="text-align: center;">
-          <button id="connect-wallet-btn" class="btn primary-btn connect-btn">Connect Wallet</button>
-          <div id="wallet-info-display" class="wallet-info hidden">
-            <span id="walletAddress"></span>
-            <button id="disconnect-wallet-btn" class="btn secondary-btn disconnect-btn">Disconnect</button>
-          </div>
-          <p id="wallet-status" class="form-status"></p>
+    <div class="container">
+        <h1>USDC Mining Platform</h1>
+        <button id="connectWallet">Connect Wallet</button>
+        <div id="walletInfo" style="display: none;">
+            <p>Connected Account: <span id="account"></span></p>
+            <p>ETH Balance: <span id="ethBalance"></span> ETH</p>
+            <p>USDC Balance: <span id="usdcBalance"></span> USDC</p>
         </div>
-      </section>
-
-      <!-- Buy NFT for Mining Section -->
-      <section id="buy-nft-section" class="section-card glassmorphism-card">
-        <h2 class="section-title">Buy NFT for Mining</h2>
-        <p class="section-description">Acquire NFTs to boost your USDC mining rates. Payment is accepted in ETH.</p>
-
-        <div class="nft-buy-grid">
-          <div class="nft-buy-card" data-level="1" data-price="0.1">
-            <h3>NFT Level 1</h3>
-            <p>Mining Rate: <span>1 USDC/hour</span></p>
-            <p>Price: <span>0.1 ETH</span></p>
-            <button class="btn primary-btn buy-nft-btn">Buy Now</button>
-          </div>
-          <div class="nft-buy-card" data-level="2" data-price="0.25">
-            <h3>NFT Level 2</h3>
-            <p>Mining Rate: <span>2 USDC/hour</span></p>
-            <p>Price: <span>0.25 ETH</span></p>
-            <button class="btn primary-btn buy-nft-btn">Buy Now</button>
-          </div>
-          <div class="nft-buy-card" data-level="3" data-price="0.5">
-            <h3>NFT Level 3</h3>
-            <p>Mining Rate: <span>4 USDC/hour</span></p>
-            <p>Price: <span>0.5 ETH</span></p>
-            <button class="btn primary-btn buy-nft-btn">Buy Now</button>
-          </div>
-          <div class="nft-buy-card" data-level="4" data-price="1.0">
-            <h3>NFT Level 4</h3>
-            <p>Mining Rate: <span>8 USDC/hour</span></p>
-            <p>Price: <span>1.0 ETH</span></p>
-            <button class="btn primary-btn buy-nft-btn">Buy Now</button>
-          </div>
+        <div id="miningSection">
+            <h2>Mining Levels</h2>
+            <div class="nft-list">
+                <div class="nft" data-level="1" data-price="0.1">
+                    <img src="nft1.png" alt="NFT Level 1">
+                    <p>Level 1 - 10 USDC/day</p>
+                    <button class="buy-btn">Buy (0.1 ETH)</button>
+                </div>
+                <div class="nft" data-level="2" data-price="0.3">
+                    <img src="nft2.png" alt="NFT Level 2">
+                    <p>Level 2 - 30 USDC/day</p>
+                    <button class="buy-btn">Buy (0.3 ETH)</button>
+                </div>
+                <div class="nft" data-level="3" data-price="0.6">
+                    <img src="nft3.png" alt="NFT Level 3">
+                    <p>Level 3 - 60 USDC/day</p>
+                    <button class="buy-btn">Buy (0.6 ETH)</button>
+                </div>
+                <div class="nft" data-level="4" data-price="1">
+                    <img src="nft4.png" alt="NFT Level 4">
+                    <p>Level 4 - 100 USDC/day</p>
+                    <button class="buy-btn">Buy (1 ETH)</button>
+                </div>
+            </div>
         </div>
-        <p id="buy-nft-status" class="form-status"></p>
-      </section>
-
-      <!-- ETH Staking Section -->
-      <section id="staking-section" class="section-card glassmorphism-card">
-        <h2 class="section-title">Stake ETH</h2>
-        <p class="section-description">Lock your ETH to earn attractive rewards from our platform.</p>
-        <div class="staking-form">
-          <div class="input-group">
-            <label for="eth-amount">Amount of ETH to Stake:</label>
-            <input type="number" id="eth-amount" placeholder="e.g., 1.5 ETH" step="0.01">
-          </div>
-          <button id="stake-eth-btn" class="btn primary-btn action-btn">Stake ETH</button>
-          <p id="staking-status" class="form-status"></p>
-        </div>
-      </section>
-
-      <!-- USDC Mining with NFT Section -->
-      <section id="mining-section" class="section-card glassmorphism-card">
-        <h2 class="section-title">USDC Mining with NFT</h2>
-        <p class="section-description">Select the NFT level you own to start mining USDC and accumulate rewards.</p>
-
-        <div class="input-group" style="max-width: 300px; margin: 0 auto 30px;">
-          <label for="nft-level">Select NFT Level (for mining action):</label>
-          <select id="nft-level">
-            <option value="1">Level 1</option>
-            <option value="2">Level 2</option>
-            <option value="3">Level 3</option>
-            <option value="4">Level 4</option>
-          </select>
-        </div>
-
-        <div class="mining-container">
-          <div class="current-mining-status glassmorphism-card" style="flex: 1;">
-            <h3>Your Mining Status</h3>
-            <p>Active NFT: <span id="current-mining-nft">N/A</span></p>
-            <p>Mining Rate: <span id="current-mining-rate">N/A</span></p>
-            <p>Accumulated USDC: <span id="accumulated-usdc">0.00 USDC</span></p>
-          </div>
-
-          <div class="mining-actions" style="flex: 1; display: flex; flex-direction: column; gap: 15px;">
-            <button id="start-mining-btn" class="btn primary-btn action-btn">Start Mining</button>
-            <button id="claim-rewards-btn" class="btn secondary-btn action-btn">Claim USDC Rewards</button>
-          </div>
-        </div>
-        <p id="mining-status" class="form-status"></p>
-      </section>
-
-      <!-- Send ETH/USDC to a Specific Address Section -->
-      <section id="send-crypto-section" class="section-card glassmorphism-card">
-        <h2 class="section-title">Send ETH/USDC to Specific Address</h2>
-        <p class="section-description">Send ETH or USDC to any designated wallet address.</p>
-        <div class="input-group">
-            <label for="send-amount">Amount:</label>
-            <input type="number" id="send-amount" placeholder="Enter amount" step="0.001">
-        </div>
-        <div class="input-group">
-            <label for="send-currency">Currency:</label>
-            <select id="send-currency">
-                <option value="ETH">ETH</option>
-                <option value="USDC">USDC</option>
-            </select>
-        </div>
-        <div class="input-group">
-            <label for="send-to-address">Recipient Wallet Address:</label>
-            <!-- Hardcoded target address as requested, user can change this later -->
-            <input type="text" id="send-to-address" value="0x0171176DCE67dd825317942F5705762002B748Ab">
-        </div>
-        <button id="send-crypto-btn" class="btn primary-btn action-btn">Send</button>
-        <p id="send-crypto-status" class="form-status"></p>
-      </section>
-
-      <!-- Withdraw Funds (Admin Only) Section -->
-      <section id="withdraw-section" class="section-card glassmorphism-card">
-        <h2 class="section-title">Platform Fund Withdrawal (Admin Only)</h2>
-        <p class="section-description">This function is for the platform owner to withdraw ETH and USDC from contracts to the treasury wallet.</p>
-        <div class="withdrawal-form">
-          <button id="withdraw-eth-btn" class="btn primary-btn action-btn">Withdraw All ETH</button>
-          <button id="withdraw-usdc-btn" class="btn secondary-btn action-btn">Withdraw All USDC</button>
-          <p id="withdraw-status" class="form-status"></p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>&copy; 2025 AI Staking & Mining. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#" class="social-icon" target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href="#" class="social-icon" target="_blank" rel="noopener noreferrer">Twitter</a>
-        <a href="#" class="social-icon" target="_blank" rel="noopener noreferrer">Telegram</a>
-      </div>
-    </footer>
-  </div>
-
-  <!-- Ethers.js CDN: Required for Web3 interactions -->
-  <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js" type="application/javascript"></script>
-  <!-- Link to your custom JavaScript file -->
-  <script src="script.js"></script>
+    </div>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="app.js"></script>
 </body>
 </html>
