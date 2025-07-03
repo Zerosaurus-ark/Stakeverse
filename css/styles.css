@@ -1,26 +1,27 @@
 /* --- Global Styles & Variables --- */
 :root {
-    --bg-dark: #0a0a0f; /* Nền tối sâu */
-    --card-bg: rgba(18, 18, 28, 0.7); /* Nền card glassmorphism */
-    --border-color: rgba(60, 60, 80, 0.5); /* Màu viền subtle */
-    --text-light: #e0e0e0; /* Chữ sáng */
-    --text-medium: #a0a0a0; /* Chữ xám trung bình */
-    --primary-color: #00bcd4; /* Xanh ngọc - màu chính, nổi bật */
-    --primary-darker: #0097a7; /* Xanh ngọc đậm hơn */
-    --secondary-color: #673ab7; /* Tím - màu phụ */
-    --secondary-darker: #5e35b1; /* Tím đậm hơn */
-    --highlight-color: #ffeb3b; /* Vàng sáng - cho các điểm nhấn quan trọng */
-    --error-color: #ef5350; /* Đỏ - báo lỗi */
-    --success-color: #4caf50; /* Xanh lá - báo thành công */
+    --bg-dark: #0a0a0f; /* Deep dark background */
+    --card-bg: rgba(18, 18, 28, 0.7); /* Glassmorphism card background */
+    --border-color: rgba(60, 60, 80, 0.5); /* Subtle border color */
+    --text-light: #e0e0e0; /* Light text for dark background */
+    --text-medium: #a0a0a0; /* Medium gray text */
+    --primary-color: #00bcd4; /* Cyan/Teal - main accent color */
+    --primary-darker: #0097a7; /* Darker cyan */
+    --secondary-color: #673ab7; /* Deep Purple - secondary accent color */
+    --secondary-darker: #5e35b1; /* Darker purple */
+    --highlight-color: #ffeb3b; /* Bright Yellow - for key emphasis */
+    --error-color: #ef5350; /* Red - for error messages */
+    --success-color: #4caf50; /* Green - for success messages */
 
     --font-heading: 'Orbitron', sans-serif;
     --font-body: 'Roboto Mono', monospace;
 
     --border-radius-lg: 12px;
     --border-radius-md: 8px;
-    --spacing-unit: 16px;
+    --spacing-unit: 16px; /* Base spacing unit */
 }
 
+/* Reset default browser styles */
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +33,8 @@ body {
     color: var(--text-light);
     background-color: var(--bg-dark);
     line-height: 1.6;
-    overflow-x: hidden; /* Ngăn cuộn ngang không mong muốn */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    /* Subtle glowing background effect */
     background-image: radial-gradient(circle at top left, rgba(0, 188, 212, 0.1), transparent 50%),
                       radial-gradient(circle at bottom right, rgba(103, 58, 183, 0.1), transparent 50%);
     background-size: 100% 100%;
@@ -56,14 +58,14 @@ body {
     padding: var(--spacing-unit);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensure content stretches to full height */
 }
 
 /* Glassmorphism Effect */
 .glassmorphism-card {
     background-color: var(--card-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-lg);
     padding: calc(var(--spacing-unit) * 2);
@@ -91,7 +93,6 @@ body {
     pointer-events: none; /* Make sure it doesn't interfere with clicks */
     opacity: 0.15; /* Subtle glow */
 }
-
 
 /* --- Header --- */
 .header {
@@ -161,7 +162,6 @@ body {
     transform-origin: bottom left;
 }
 
-
 /* --- Buttons --- */
 .btn {
     padding: 12px 25px;
@@ -200,6 +200,7 @@ body {
     filter: grayscale(1);
 }
 
+/* Specific button colors */
 .primary-btn {
     background-color: var(--primary-color);
     color: var(--bg-dark);
@@ -222,31 +223,23 @@ body {
     box-shadow: 0 0 15px rgba(103, 58, 183, 0.6);
 }
 
+/* Wallet specific buttons */
 .connect-btn, .disconnect-btn {
     padding: 10px 20px;
     font-size: 0.9em;
 }
 
-.connect-btn {
-    background-color: var(--primary-color);
-    color: var(--bg-dark);
-}
-
-.disconnect-btn {
-    background-color: var(--secondary-color);
-    color: var(--text-light);
-    margin-left: 10px;
-}
-
 .wallet-info {
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: rgba(40, 40, 55, 0.6);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-md);
     padding: 8px 15px;
     font-size: 0.9em;
     font-family: var(--font-body);
+    margin-top: var(--spacing-unit);
 }
 
 #walletAddress {
@@ -254,6 +247,22 @@ body {
     color: var(--highlight-color);
     text-shadow: 0 0 5px rgba(255, 235, 59, 0.3);
 }
+
+/* Loading state for buttons */
+.btn.loading {
+    cursor: wait;
+    /* Basic loading animation */
+    background-image: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+    background-size: 200% 100%;
+    background-position: left;
+    animation: loadingEffect 1.5s infinite linear;
+}
+
+@keyframes loadingEffect {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
 
 /* --- Main Content Sections --- */
 .main-content {
@@ -282,92 +291,6 @@ body {
     margin-bottom: calc(var(--spacing-unit) * 2);
 }
 
-/* Hero Section */
-.hero-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: calc(var(--spacing-unit) * 3) var(--spacing-unit);
-    margin-top: calc(var(--spacing-unit) * 2);
-    position: relative;
-    overflow: hidden;
-    background-color: rgba(18, 18, 28, 0.8); /* Slightly less transparent */
-    border-radius: var(--border-radius-lg);
-    z-index: 1;
-}
-
-.hero-section h2 {
-    font-family: var(--font-heading);
-    font-size: 3.5em;
-    margin-bottom: var(--spacing-unit);
-    color: var(--highlight-color);
-    text-shadow: 0 0 20px rgba(255, 235, 59, 0.5);
-    line-height: 1.2;
-}
-
-.hero-section p {
-    font-size: 1.3em;
-    color: var(--text-light);
-    max-width: 800px;
-    margin-bottom: calc(var(--spacing-unit) * 2);
-}
-
-.hero-actions {
-    display: flex;
-    gap: var(--spacing-unit);
-    margin-top: var(--spacing-unit);
-}
-
-/* Matrix Grid Effect (Placeholder for visual) */
-.matrix-grid-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(to right, rgba(0, 188, 212, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 188, 212, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px; /* Adjust grid size */
-    opacity: 0.3;
-    z-index: -1;
-    animation: matrixScroll 60s linear infinite;
-}
-
-@keyframes matrixScroll {
-    from { background-position: 0 0; }
-    to { background-position: -2000px -2000px; }
-}
-
-
-/* Data Cards */
-.data-card {
-    background-color: rgba(40, 40, 55, 0.6);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-md);
-    padding: var(--spacing-unit);
-    text-align: center;
-    flex: 1;
-    min-width: 180px;
-    box-shadow: inset 0 0 8px rgba(0, 188, 212, 0.1);
-}
-
-.data-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1.1em;
-    color: var(--text-medium);
-    margin-bottom: 8px;
-}
-
-.data-card p {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: var(--highlight-color);
-    text-shadow: 0 0 5px rgba(255, 235, 59, 0.2);
-}
-
-
 /* Forms & Inputs */
 .input-group {
     margin-bottom: var(--spacing-unit);
@@ -381,6 +304,7 @@ body {
 }
 
 .input-group input[type="number"],
+.input-group input[type="text"],
 .input-group select {
     width: 100%;
     padding: 12px;
@@ -395,13 +319,14 @@ body {
 }
 
 .input-group input[type="number"]:focus,
+.input-group input[type="text"]:focus,
 .input-group select:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.3);
 }
 
 .input-group select {
-    appearance: none; /* Loại bỏ style mặc định của select */
+    appearance: none; /* Remove default select styles */
     -webkit-appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23a0a0a0" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
     background-repeat: no-repeat;
@@ -431,28 +356,12 @@ body {
 
 
 /* Staking Section Specifics */
-.staking-container, .mining-container, .balance-container, .withdrawal-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: calc(var(--spacing-unit) * 1.5);
-    justify-content: center;
-}
-
-.staking-overview {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-unit);
-    justify-content: center;
-    width: 100%;
-    margin-bottom: calc(var(--spacing-unit) * 2);
-}
-
 .staking-form, .withdrawal-form {
-    flex: 2;
-    min-width: 300px;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-unit);
+    max-width: 500px; /* Limit width for forms */
+    margin: 0 auto;
 }
 
 .action-btn {
@@ -460,231 +369,7 @@ body {
 }
 
 
-/* Mining Section Specifics */
-.nft-selection-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-unit);
-    width: 100%;
-    margin-bottom: calc(var(--spacing-unit) * 2);
-}
-
-.nft-card {
-    background-color: rgba(40, 40, 55, 0.6);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-md);
-    padding: var(--spacing-unit);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.nft-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
-    transform: translateY(-5px);
-}
-
-.nft-card.selected {
-    border: 2px solid var(--highlight-color);
-    box-shadow: 0 0 20px rgba(255, 235, 59, 0.5);
-    background-color: rgba(40, 40, 55, 0.8);
-}
-
-.nft-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1.3em;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.nft-card .nft-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; /* Circle image */
-    object-fit: cover;
-    margin-bottom: 10px;
-    border: 3px solid rgba(0, 188, 212, 0.5);
-    transition: border-color 0.3s ease;
-}
-
-.nft-card.selected .nft-image {
-    border-color: var(--highlight-color);
-}
-
-.nft-card .mining-rate, .nft-card .price {
-    font-size: 0.95em;
-    color: var(--text-medium);
-    margin-bottom: 5px;
-}
-
-.nft-card .mining-rate {
-    font-weight: bold;
-    color: var(--highlight-color);
-}
-
-.nft-card .btn {
-    margin-top: 10px;
-    padding: 8px 15px;
-    font-size: 0.9em;
-    width: auto;
-}
-
-.current-mining-status {
-    background-color: rgba(40, 40, 55, 0.6);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-md);
-    padding: var(--spacing-unit);
-    width: 100%;
-    text-align: center;
-}
-
-.current-mining-status h3 {
-    font-family: var(--font-heading);
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-unit);
-}
-
-.current-mining-status p {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-
-.current-mining-status span {
-    color: var(--highlight-color);
-    font-weight: bold;
-}
-
-/* About Section */
-.about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: justify;
-}
-
-.about-content p {
-    margin-bottom: var(--spacing-unit);
-    color: var(--text-light);
-}
-
-.info-list {
-    list-style: none;
-    padding-left: 0;
-    margin-top: var(--spacing-unit);
-}
-
-.info-list li {
-    margin-bottom: 8px;
-    color: var(--text-medium);
-    position: relative;
-    padding-left: 25px;
-}
-
-.info-list li::before {
-    content: '▶'; /* Custom bullet point */
-    color: var(--primary-color);
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.info-list li strong {
-    color: var(--primary-color);
-}
-
-
-/* --- Footer --- */
-.footer {
-    text-align: center;
-    padding: var(--spacing-unit) 0;
-    margin-top: calc(var(--spacing-unit) * 3);
-    border-top: 1px solid var(--border-color);
-    color: var(--text-medium);
-    font-size: 0.9em;
-}
-
-.social-links {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-unit);
-}
-
-.social-icon {
-    color: var(--text-medium);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.social-icon:hover {
-    color: var(--primary-color);
-}
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 992px) {
-    .header {
-        flex-direction: column;
-        gap: var(--spacing-unit);
-    }
-    .main-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .hero-section h2 {
-        font-size: 2.8em;
-    }
-    .section-title {
-        font-size: 2em;
-    }
-}
-
-@media (max-width: 768px) {
-    .main-nav {
-        flex-direction: column;
-        align-items: center;
-    }
-    .hero-actions {
-        flex-direction: column;
-    }
-    .staking-overview, .nft-selection-grid {
-        grid-template-columns: 1fr; /* Stack columns on smaller screens */
-    }
-    .data-card {
-        width: 100%;
-        flex: none;
-    }
-    .staking-form, .withdrawal-form {
-        min-width: unset;
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo h1 {
-        font-size: 1.8em;
-    }
-    .hero-section h2 {
-        font-size: 2em;
-    }
-    .hero-section p {
-        font-size: 1em;
-    }
-    .btn {
-        padding: 10px 20px;
-        font-size: 0.9em;
-    }
-    .section-title {
-        font-size: 1.6em;
-    }
-    .glassmorphism-card {
-        padding: var(--spacing-unit);
-
-        /* Add this to your styles.css */
-
+/* Buy NFT Section Specifics */
 .nft-buy-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -732,27 +417,135 @@ body {
     width: 100%;
 }
 
-/* Responsive for smaller screens */
-@media (max-width: 600px) {
-    .nft-buy-grid {
-        grid-template-columns: 1fr;
+
+/* Mining Section Specifics */
+.mining-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: calc(var(--spacing-unit) * 1.5);
+    justify-content: center;
+}
+
+.current-mining-status {
+    background-color: rgba(40, 40, 55, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-unit);
+    flex: 1; /* Allows it to grow */
+    min-width: 280px; /* Minimum width before wrapping */
+    text-align: center;
+}
+
+.current-mining-status h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-unit);
+}
+
+.current-mining-status p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.current-mining-status span {
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+.mining-actions {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center; /* Center buttons vertically */
+}
+
+
+/* Send Crypto Section Specifics */
+#send-crypto-section .input-group {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#send-crypto-section .action-btn {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    padding: var(--spacing-unit) 0;
+    margin-top: calc(var(--spacing-unit) * 3);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-medium);
+    font-size: 0.9em;
+}
+
+.social-links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-unit);
+}
+
+.social-icon {
+    color: var(--text-medium);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .header {
+        flex-direction: column;
+        gap: var(--spacing-unit);
+    }
+    .main-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .section-title {
+        font-size: 2em;
     }
 }
 
-/* Add this to potentially show a loading spinner on buttons */
-.btn.loading {
-    cursor: wait;
-    /* Example: basic loading indicator (replace with actual spinner if desired) */
-    background-image: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
-    background-size: 200% 100%;
-    background-position: left;
-    animation: loadingEffect 1.5s infinite linear;
+@media (max-width: 768px) {
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nft-buy-grid,
+    .mining-container {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        flex-direction: column; /* Stack flex items */
+    }
+    .current-mining-status,
+    .mining-actions {
+        min-width: unset; /* Remove min-width to allow full stacking */
+        width: 100%;
+    }
+    .glassmorphism-card {
+        padding: var(--spacing-unit); /* Reduce padding on smaller screens */
+    }
 }
 
-@keyframes loadingEffect {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.8em;
     }
-    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .section-title {
+        font-size: 1.6em;
+    }
 }
