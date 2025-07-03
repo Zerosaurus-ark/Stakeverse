@@ -1,47 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USDC Mining with NFTs</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>USDC Mining & NFT Shop</title>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- ethers.js -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>USDC Mining Platform</h1>
-        <button id="connectWallet">Connect Wallet</button>
-        <div id="walletInfo" style="display: none;">
-            <p>Connected Account: <span id="account"></span></p>
-            <p>ETH Balance: <span id="ethBalance"></span> ETH</p>
-            <p>USDC Balance: <span id="usdcBalance"></span> USDC</p>
-        </div>
-        <div id="miningSection">
-            <h2>Mining Levels</h2>
-            <div class="nft-list">
-                <div class="nft" data-level="1" data-price="0.1">
-                    <img src="nft1.png" alt="NFT Level 1">
-                    <p>Level 1 - 10 USDC/day</p>
-                    <button class="buy-btn">Buy (0.1 ETH)</button>
-                </div>
-                <div class="nft" data-level="2" data-price="0.3">
-                    <img src="nft2.png" alt="NFT Level 2">
-                    <p>Level 2 - 30 USDC/day</p>
-                    <button class="buy-btn">Buy (0.3 ETH)</button>
-                </div>
-                <div class="nft" data-level="3" data-price="0.6">
-                    <img src="nft3.png" alt="NFT Level 3">
-                    <p>Level 3 - 60 USDC/day</p>
-                    <button class="buy-btn">Buy (0.6 ETH)</button>
-                </div>
-                <div class="nft" data-level="4" data-price="1">
-                    <img src="nft4.png" alt="NFT Level 4">
-                    <p>Level 4 - 100 USDC/day</p>
-                    <button class="buy-btn">Buy (1 ETH)</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-    <script src="app.js"></script>
+  <div class="container">
+    <header>
+      <h1>USDC Mining Web3</h1>
+      <div class="wallet-info">
+        <button id="connectBtn">Kết nối ví</button>
+        <div id="account">Chưa kết nối</div>
+      </div>
+      <div id="balances">
+        <p>ETH: <span id="ethBalance">-</span></p>
+        <p>USDC: <span id="usdcBalance">-</span></p>
+      </div>
+    </header>
+    <main>
+      <h2>Khám phá NFT cấp độ đào</h2>
+      <div class="nft-grid" id="nftGrid"></div>
+    </main>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
