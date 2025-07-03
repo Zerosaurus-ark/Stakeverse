@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Staking & Mining</title>
-  <!-- Google Fonts: Orbitron for headings, Roboto Mono for body text -->
+  <title>AI Staking & Mining Platform</title>
+
+  <!-- Google Fonts: Orbitron for headings (AI/Tech feel), Roboto Mono for body text (code/terminal feel) -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-  <!-- Link to your CSS file -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;707&display=swap" rel="stylesheet">
+  
+  <!-- Link to your custom stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,7 +26,7 @@
         <a href="#staking-section" class="nav-item">ETH Staking</a>
         <a href="#mining-section" class="nav-item">USDC Mining</a>
         <a href="#send-crypto-section" class="nav-item">Send Crypto</a>
-        <a href="#withdraw-section" class="nav-item">Withdraw (Admin)</a>
+        <a href="#withdraw-section" class="nav-item">Admin Tools</a>
       </nav>
     </header>
 
@@ -32,7 +34,7 @@
       <!-- Wallet Connection Section -->
       <section id="wallet-section" class="section-card glassmorphism-card">
         <h2 class="section-title">Connect Web3 Wallet</h2>
-        <p class="section-description">To interact with our platform, please connect your wallet.</p>
+        <p class="section-description">To interact with our platform, please connect your Web3 wallet (e.g., MetaMask).</p>
         <div class="input-group" style="text-align: center;">
           <button id="connect-wallet-btn" class="btn primary-btn connect-btn">Connect Wallet</button>
           <div id="wallet-info-display" class="wallet-info hidden">
@@ -46,7 +48,7 @@
       <!-- Buy NFT for Mining Section -->
       <section id="buy-nft-section" class="section-card glassmorphism-card">
         <h2 class="section-title">Buy NFT for Mining</h2>
-        <p class="section-description">Select the NFT level you wish to purchase. The transaction will be in ETH.</p>
+        <p class="section-description">Acquire NFTs to boost your USDC mining rates. Payment is accepted in ETH.</p>
 
         <div class="nft-buy-grid">
           <div class="nft-buy-card" data-level="1" data-price="0.1">
@@ -80,7 +82,7 @@
       <!-- ETH Staking Section -->
       <section id="staking-section" class="section-card glassmorphism-card">
         <h2 class="section-title">Stake ETH</h2>
-        <p class="section-description">Stake your ETH to earn attractive rewards.</p>
+        <p class="section-description">Lock your ETH to earn attractive rewards from our platform.</p>
         <div class="staking-form">
           <div class="input-group">
             <label for="eth-amount">Amount of ETH to Stake:</label>
@@ -94,7 +96,7 @@
       <!-- USDC Mining with NFT Section -->
       <section id="mining-section" class="section-card glassmorphism-card">
         <h2 class="section-title">USDC Mining with NFT</h2>
-        <p class="section-description">Select the NFT level you own to start mining USDC.</p>
+        <p class="section-description">Select the NFT level you own to start mining USDC and accumulate rewards.</p>
 
         <div class="input-group" style="max-width: 300px; margin: 0 auto 30px;">
           <label for="nft-level">Select NFT Level (for mining action):</label>
@@ -125,7 +127,7 @@
       <!-- Send ETH/USDC to a Specific Address Section -->
       <section id="send-crypto-section" class="section-card glassmorphism-card">
         <h2 class="section-title">Send ETH/USDC to Specific Address</h2>
-        <p class="section-description">Send ETH or USDC to a designated address.</p>
+        <p class="section-description">Send ETH or USDC to any designated wallet address.</p>
         <div class="input-group">
             <label for="send-amount">Amount:</label>
             <input type="number" id="send-amount" placeholder="Enter amount" step="0.001">
@@ -139,8 +141,8 @@
         </div>
         <div class="input-group">
             <label for="send-to-address">Recipient Wallet Address:</label>
-            <!-- Hardcoded target address as requested -->
-            <input type="text" id="send-to-address" value="0x0171176DCE67dd825317942F5705762002B748Ab" readonly>
+            <!-- Hardcoded target address as requested, user can change this later -->
+            <input type="text" id="send-to-address" value="0x0171176DCE67dd825317942F5705762002B748Ab">
         </div>
         <button id="send-crypto-btn" class="btn primary-btn action-btn">Send</button>
         <p id="send-crypto-status" class="form-status"></p>
@@ -148,7 +150,7 @@
 
       <!-- Withdraw Funds (Admin Only) Section -->
       <section id="withdraw-section" class="section-card glassmorphism-card">
-        <h2 class="section-title">Platform Fund Withdrawal (Admin)</h2>
+        <h2 class="section-title">Platform Fund Withdrawal (Admin Only)</h2>
         <p class="section-description">This function is for the platform owner to withdraw ETH and USDC from contracts to the treasury wallet.</p>
         <div class="withdrawal-form">
           <button id="withdraw-eth-btn" class="btn primary-btn action-btn">Withdraw All ETH</button>
@@ -161,16 +163,16 @@
     <footer class="footer">
       <p>&copy; 2025 AI Staking & Mining. All rights reserved.</p>
       <div class="social-links">
-        <a href="#" class="social-icon">Facebook</a>
-        <a href="#" class="social-icon">Twitter</a>
-        <a href="#" class="social-icon">Telegram</a>
+        <a href="#" class="social-icon" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="#" class="social-icon" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="#" class="social-icon" target="_blank" rel="noopener noreferrer">Telegram</a>
       </div>
     </footer>
   </div>
 
-  <!-- Ethers.js CDN (version 5.7) -->
+  <!-- Ethers.js CDN: Required for Web3 interactions -->
   <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js" type="application/javascript"></script>
-  <!-- Link to your JavaScript file -->
+  <!-- Link to your custom JavaScript file -->
   <script src="script.js"></script>
 </body>
 </html>
