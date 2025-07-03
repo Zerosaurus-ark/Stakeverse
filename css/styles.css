@@ -682,5 +682,77 @@ body {
     }
     .glassmorphism-card {
         padding: var(--spacing-unit);
+
+        /* Add this to your styles.css */
+
+.nft-buy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-unit);
+    margin-top: var(--spacing-unit);
+}
+
+.nft-buy-card {
+    background-color: rgba(40, 40, 55, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-unit);
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nft-buy-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
+    transform: translateY(-3px);
+}
+
+.nft-buy-card h3 {
+    font-family: var(--font-heading);
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+.nft-buy-card p {
+    font-size: 0.95em;
+    color: var(--text-medium);
+    margin-bottom: 5px;
+}
+
+.nft-buy-card p span {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nft-buy-card .btn {
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+    .nft-buy-grid {
+        grid-template-columns: 1fr;
     }
+}
+
+/* Add this to potentially show a loading spinner on buttons */
+.btn.loading {
+    cursor: wait;
+    /* Example: basic loading indicator (replace with actual spinner if desired) */
+    background-image: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+    background-size: 200% 100%;
+    background-position: left;
+    animation: loadingEffect 1.5s infinite linear;
+}
+
+@keyframes loadingEffect {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+    }
+    
 }
