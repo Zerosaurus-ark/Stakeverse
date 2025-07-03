@@ -1,167 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World (HWR) - High APR Staking & NFT Mining</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nexus - Staking & Mining DApp</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Sẽ cần tạo file CSS này sau -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Có thể thêm icon font như Font Awesome nếu cần -->
 </head>
-<body>
+<body class="ai-theme">
+    <div id="app-container">
+        <!-- HEADER SECTION -->
+        <header class="header">
+            <div class="logo">
+                <h1><span class="highlight">AI</span> Nexus</h1>
+                <p class="tagline">The Future of Decentralized Finance</p>
+            </div>
+            <nav class="main-nav">
+                <a href="#staking-section" class="nav-item">Staking ETH</a>
+                <a href="#mining-section" class="nav-item">Mining USDC</a>
+                <a href="#about-section" class="nav-item">About Us</a>
+            </nav>
+            <div class="wallet-status">
+                <button id="connectWalletBtn" class="btn connect-btn">Connect Wallet</button>
+                <div id="walletInfo" class="wallet-info hidden">
+                    <span id="walletAddress">Not Connected</span>
+                    <button id="disconnectWalletBtn" class="btn disconnect-btn">Disconnect</button>
+                </div>
+            </div>
+        </header>
 
-  <!-- Navigation Header -->
-  <header class="site-header">
-    <div class="container">
-      <a href="#" class="logo">HWR</a>
-      <nav class="nav">
-        <ul>
-          <li><a href="#staking">Staking</a></li>
-          <li><a href="#mining">Mining</a></li>
-          <li><a href="#nfts">NFTs</a></li>
-          <li><a href="#roadmap">Roadmap</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="nav-toggle" aria-label="toggle navigation">
-        <span class="hamburger"></span>
-      </button>
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            <!-- HERO SECTION - Giới thiệu chung -->
+            <section id="hero-section" class="hero-section glassmorphism-card">
+                <div class="hero-content">
+                    <h2>Empower Your Assets with AI-Driven DeFi</h2>
+                    <p>Stake ETH for passive income and mine USDC with cutting-edge NFT technology. Join the evolution of finance.</p>
+                    <div class="hero-actions">
+                        <button class="btn primary-btn scroll-to-btn" data-target="staking-section">Start Staking</button>
+                        <button class="btn secondary-btn scroll-to-btn" data-target="mining-section">Start Mining</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Placeholder cho hiệu ứng hoặc hình ảnh AI -->
+                    <div class="matrix-grid-bg"></div>
+                </div>
+            </section>
+
+            <!-- STAKING ETH SECTION -->
+            <section id="staking-section" class="section-card glassmorphism-card">
+                <h2 class="section-title">🚀 ETH Staking Protocol</h2>
+                <p class="section-description">Unlock the power of your Ethereum. Stake your ETH and earn rewards.</p>
+                <div class="staking-container">
+                    <div class="staking-overview">
+                        <div class="data-card">
+                            <h3>Total Staked ETH</h3>
+                            <p id="totalStakedEth">0.00 ETH</p>
+                        </div>
+                        <div class="data-card">
+                            <h3>Your Staked ETH</h3>
+                            <p id="yourStakedEth">0.00 ETH</p>
+                        </div>
+                        <div class="data-card">
+                            <h3>Estimated APY</h3>
+                            <p id="estimatedApy">~5.0%</p>
+                        </div>
+                    </div>
+                    <div class="staking-form">
+                        <div class="input-group">
+                            <label for="stakeAmount">Amount to Stake (ETH):</label>
+                            <input type="number" id="stakeAmount" min="0.001" step="0.001" placeholder="e.g., 1.0">
+                        </div>
+                        <button id="stakeEthBtn" class="btn primary-btn action-btn" disabled>Stake ETH</button>
+                        <button id="unstakeEthBtn" class="btn secondary-btn action-btn" disabled>Unstake ETH</button>
+                        <p class="form-status" id="stakeStatus"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MINING USDC SECTION -->
+            <section id="mining-section" class="section-card glassmorphism-card">
+                <h2 class="section-title">⛏️ USDC Mining Center</h2>
+                <p class="section-description">Choose your NFT miner and start generating USDC with advanced AI algorithms.</p>
+                <div class="mining-container">
+                    <div class="nft-selection-grid">
+                        <!-- NFT Item 1 -->
+                        <div class="nft-card" data-nft-level="1">
+                            <h3>AI Miner X-1</h3>
+                            <img src="https://via.placeholder.com/150/007bff/ffffff?text=NFT+L1" alt="NFT Level 1" class="nft-image">
+                            <p class="mining-rate">Rate: 1 USDC/hr</p>
+                            <p class="price">Price: 0.1 ETH</p>
+                            <button class="btn select-nft-btn" data-nft-id="1">Select</button>
+                        </div>
+                        <!-- NFT Item 2 -->
+                        <div class="nft-card" data-nft-level="2">
+                            <h3>AI Miner Y-2</h3>
+                            <img src="https://via.placeholder.com/150/6610f2/ffffff?text=NFT+L2" alt="NFT Level 2" class="nft-image">
+                            <p class="mining-rate">Rate: 2 USDC/hr</p>
+                            <p class="price">Price: 0.3 ETH</p>
+                            <button class="btn select-nft-btn" data-nft-id="2">Select</button>
+                        </div>
+                        <!-- NFT Item 3 -->
+                        <div class="nft-card" data-nft-level="3">
+                            <h3>AI Miner Z-3</h3>
+                            <img src="https://via.placeholder.com/150/fd7e14/ffffff?text=NFT+L3" alt="NFT Level 3" class="nft-image">
+                            <p class="mining-rate">Rate: 4 USDC/hr</p>
+                            <p class="price">Price: 0.7 ETH</p>
+                            <button class="btn select-nft-btn" data-nft-id="3">Select</button>
+                        </div>
+                        <!-- NFT Item 4 -->
+                        <div class="nft-card" data-nft-level="4">
+                            <h3>AI Miner Omega-4</h3>
+                            <img src="https://via.placeholder.com/150/dc3545/ffffff?text=NFT+L4" alt="NFT Level 4" class="nft-image">
+                            <p class="mining-rate">Rate: 8 USDC/hr</p>
+                            <p class="price">Price: 1.5 ETH</p>
+                            <button class="btn select-nft-btn" data-nft-id="4">Select</button>
+                        </div>
+                    </div>
+                    <div class="current-mining-status">
+                        <h3>Your Current Mining Session:</h3>
+                        <p>Selected NFT: <span id="selectedNftName">None</span> (<span id="selectedNftRate">0 USDC/hr</span>)</p>
+                        <p>USDC Mined: <span id="usdcMinedAmount">0.00 USDC</span></p>
+                        <button id="startMiningBtn" class="btn primary-btn action-btn" disabled>Start Mining</button>
+                        <button id="claimUsdcBtn" class="btn secondary-btn action-btn" disabled>Claim USDC</button>
+                        <p class="form-status" id="miningStatus"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WITHDRAWAL/TREASURY SECTION (optional for users, but good for admin info or general funds) -->
+            <section id="withdrawal-section" class="section-card glassmorphism-card">
+                <h2 class="section-title">💸 Your Balances</h2>
+                <p class="section-description">Manage your earned assets.</p>
+                <div class="balance-container">
+                    <div class="data-card">
+                        <h3>Your ETH Balance</h3>
+                        <p id="userEthBalance">0.00 ETH</p>
+                    </div>
+                    <div class="data-card">
+                        <h3>Your USDC Balance</h3>
+                        <p id="userUsdcBalance">0.00 USDC</p>
+                    </div>
+                </div>
+                <div class="withdrawal-form">
+                    <div class="input-group">
+                        <label for="withdrawAmount">Amount to Withdraw:</label>
+                        <input type="number" id="withdrawAmount" min="0.001" step="0.001" placeholder="e.g., 100.0">
+                    </div>
+                    <div class="input-group">
+                        <label for="withdrawAsset">Select Asset:</label>
+                        <select id="withdrawAsset">
+                            <option value="eth">ETH</option>
+                            <option value="usdc">USDC</option>
+                        </select>
+                    </div>
+                    <button id="withdrawBtn" class="btn primary-btn action-btn" disabled>Withdraw to Wallet</button>
+                    <p class="form-status" id="withdrawStatus"></p>
+                </div>
+            </section>
+
+            <!-- ABOUT/INFO SECTION -->
+            <section id="about-section" class="section-card glassmorphism-card">
+                <h2 class="section-title">🌐 About AI Nexus</h2>
+                <div class="about-content">
+                    <p>AI Nexus is a cutting-edge decentralized application leveraging the power of Artificial Intelligence to optimize DeFi protocols. Our platform offers secure ETH staking and an innovative USDC mining experience through unique NFT assets.</p>
+                    <p>Built on robust blockchain technology, AI Nexus aims to provide transparent, efficient, and rewarding opportunities for users worldwide.</p>
+                    <ul class="info-list">
+                        <li><strong>Decentralized:</strong> Fully on-chain operations.</li>
+                        <li><strong>Secure:</strong> Audited smart contracts.</li>
+                        <li><strong>Innovative:</strong> AI-powered mining algorithms.</li>
+                        <li><strong>Rewarding:</strong> Attractive APY for staking and high mining rates.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER SECTION -->
+        <footer class="footer">
+            <p>&copy; 2023 AI Nexus. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">Telegram</a>
+                <a href="#" class="social-icon">GitHub</a>
+            </div>
+        </footer>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="overlay"></div>
-    <div class="container hero-content">
-      <h1>Stack with HWR, Mine with NFTs</h1>
-      <p class="tagline">🚀 Mở khóa APR <strong>200%</strong> với nền tảng độc đáo của chúng tôi!</p>
-      <a href="#staking" class="btn">Start Staking</a>
-      <a href="#mining" class="btn">Mine with HWR</a>
-    </div>
-  </section>
-
-  <!-- Staking Section -->
-  <section id="staking" class="section">
-    <div class="container">
-      <h2>Staking - APR <strong>200%</strong></h2>
-      <p>
-        Với <strong>Hello World (HWR)</strong>, bạn có thể <strong>staking</strong> để nhận lãi suất cao đến <strong>200%</strong> mỗi năm.  
-        Tận hưởng lợi nhuận nhanh chóng và an toàn với nền tảng được thiết kế để tối ưu hóa trải nghiệm người dùng.
-      </p>
-      <div class="staking-stats">
-        <div class="stat">
-          <h3>APR</h3>
-          <p><strong>200%</strong></p>
-        </div>
-        <div class="stat">
-          <h3>Min. Staking</h3>
-          <p><strong>100 HWR</strong></p>
-        </div>
-        <div class="stat">
-          <h3>Min. Duration</h3>
-          <p><strong>7 days</strong></p>
-        </div>
-      </div>
-      <a href="#" class="btn">Start Staking Now</a>
-    </div>
-  </section>
-
-  <!-- Mining Section -->
-  <section id="mining" class="section alt-bg">
-    <div class="container">
-      <h2>Mining - NFTs Boost Speed</h2>
-      <p>
-        HWR không chỉ là một token, mà còn là **token NFT** giúp bạn <strong>tăng tốc độ đào</strong> lên gấp 3 lần so với người không sở hữu NFT.  
-        Hãy **mua NFT** để mở khóa tiềm năng lớn nhất của HWR.
-      </p>
-      <div class="mining-stats">
-        <div class="stat">
-          <h3>Min. Mining</h3>
-          <p><strong>100 HWR</strong></p>
-        </div>
-        <div class="stat">
-          <h3>Boost with NFT</h3>
-          <p><strong>3x Speed</strong></p>
-        </div>
-        <div class="stat">
-          <h3>Min. Duration</h3>
-          <p><strong>14 days</strong></p>
-        </div>
-      </div>
-      <a href="#" class="btn">Mine with HWR</a>
-    </div>
-  </section>
-
-  <!-- NFT Section -->
-  <section id="nfts" class="section">
-    <div class="container">
-      <h2>NFTs - Unlock Mining Power</h2>
-      <p>
-        Mỗi NFT của HWR là một **token độc quyền** giúp bạn tăng tốc độ đào lên gấp 3 lần.  
-        Hãy sở hữu NFT để tận dụng lợi thế này.
-      </p>
-      <div class="nft-features">
-        <div class="feature">
-          <h3>Unique Token</h3>
-          <p>Token NFT độc quyền, chỉ có 1000 token tồn tại.</p>
-        </div>
-        <div class="feature">
-          <h3>3x Mining Speed</h3>
-          <p>Đào nhanh hơn 3 lần so với người không sở hữu NFT.</p>
-        </div>
-        <div class="feature">
-          <h3>Exclusive Access</h3>
-          <p>Chỉ người sở hữu NFT mới được tham gia vào các sự kiện đặc biệt.</p>
-        </div>
-      </div>
-      <a href="#" class="btn">Mint NFT Now</a>
-    </div>
-  </section>
-
-  <!-- Roadmap Section -->
-  <section id="roadmap" class="section alt-bg">
-    <div class="container">
-      <h2>Roadmap</h2>
-      <div class="roadmap">
-        <div class="roadmap-item">
-          <h3>Q3 2025</h3>
-          <p>Launch NFTs & Staking Pool</p>
-        </div>
-        <div class="roadmap-item">
-          <h3>Q4 2025</h3>
-          <p>Integrate with major DEXs & CEXs</p>
-        </div>
-        <div class="roadmap-item">
-          <h3>Q1 2026</h3>
-          <p>Launch Mining Protocol & Community Events</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>
-        Nếu bạn có câu hỏi về staking, mining, hoặc NFTs, hãy liên hệ với chúng tôi qua form dưới đây.
-      </p>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 Hello World (HWR). All rights reserved.</p>
-      <p class="slogan">"Hello, World. Your code is ready. Are you?"</p>
-    </div>
-  </footer>
-
-  <script src="js/script.js"></script>
+    <!-- JavaScript files -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script> <!-- Hoặc Web3.js -->
+    <script src="app.js"></script> <!-- Sẽ cần tạo file JS này sau -->
 </body>
 </html>
